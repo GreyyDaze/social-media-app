@@ -6,6 +6,10 @@ const messages = document.querySelector(".messages");
 const message = document.querySelectorAll(".message");
 const messageSearch = document.querySelector(".messages #message-search");
 
+//theme 
+const theme = document.querySelector("#theme");
+const customizeThemeBox = document.querySelector(".customize-theme");
+
 const changeActiveClass = () => {
   menuItems.forEach((item) => {
     item.classList.remove("active");
@@ -56,3 +60,22 @@ const searchMessage = () => {
 };
 
 messageSearch.addEventListener("keyup", searchMessage);
+
+
+//theme customization
+//open modal
+const openThemeBox = () => {
+  customizeThemeBox.style.display = "grid";
+}
+
+theme.addEventListener('click', openThemeBox);
+
+//close modal
+const closeThemeBox = (e) => {
+    if(e.target.classList.contains("customize-theme")) {
+        customizeThemeBox.style.display = "none";
+    }
+}
+
+customizeThemeBox.addEventListener("click", closeThemeBox)
+   
