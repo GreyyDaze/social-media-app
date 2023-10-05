@@ -1,0 +1,875 @@
+:root {
+  --color-white: hsl(252, 30%, 100%);
+  --color-light: hsl(252, 30%, 95%);
+  --color-gray: hsl(252, 15%, 65%);
+  --color-primary: hsl(252, 75%, 60%);
+  --color-secondary: hsl(252, 100%, 90%);
+  --color-success: hsl(120, 95%, 65%);
+  --color-danger: hsl(0, 95%, 65%);
+  --color-dark: hsl(252, 30%, 17%);
+  --color-black: hsl(252, 30%, 10%);
+
+  --border-radius: 2rem;
+  --card-border-radius: 1rem;
+  --btn-padding: 0.6rem 2rem;
+  --search-padding: 0.6rem 1rem;
+  --card-padding: 1rem;
+
+  --sticky-top-left: 5.4rem;
+  --sticky-top-right: -18rem;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  list-style: none;
+  border: none;
+  outline: none;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: var(--color-dark);
+  background-color: var(--color-light);
+  overflow-x: hidden;
+}
+
+/* ----------------General styles------------------- */
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.profile-picture {
+  width: 2.7rem;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+.btn {
+  display: inline-block;
+  padding: var(--btn-padding);
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.text-bold {
+  font-weight: 700;
+}
+
+.text-muted {
+  color: var(--color-gray);
+}
+
+/* ----------------Navbar styles------------------- */
+nav {
+  width: 100%;
+  background-color: var(--color-white);
+  padding: 0.7rem 0;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-bar {
+  background-color: var(--color-light);
+  border-radius: var(--border-radius);
+  padding: var(--search-padding);
+}
+
+.search-bar input[type="search"] {
+  background-color: transparent;
+  width: 30vw;
+  margin-left: 1rem;
+  font-size: 0.9rem;
+  color: var(--color-dark);
+}
+
+.search-bar input[type="search"]::placeholder {
+  color: var(--color-gray);
+}
+
+nav .create {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* ----------------Main styles------------------- */
+main {
+  position: relative;
+  top: 5.4rem;
+}
+
+main .container {
+  display: grid;
+  grid-template-columns: 18vw auto 20vw;
+  column-gap: 2rem;
+  position: relative;
+}
+
+/* ----------------Left styles------------------- */
+main .container .left {
+  position: sticky;
+  top: var(--sticky-top-left);
+  height: max-content;
+}
+
+main .container .left .profile {
+  background-color: var(--color-white);
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+  width: 100%;
+}
+
+/* ----------------Left Sidebar styles------------------- */
+.left .sidebar {
+  background-color: var(--color-white);
+  border-radius: var(--card-border-radius);
+  margin-top: 1rem;
+}
+
+.left .sidebar .menu-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  column-gap: 1.7rem;
+  height: 4rem;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+
+.left .sidebar .menu-item:hover {
+  background-color: var(--color-light);
+}
+
+.left .sidebar i {
+  font-size: 1.4rem;
+  color: var(--color-gray);
+  margin-left: 2rem;
+  position: relative;
+}
+
+.left .sidebar i .notification-count {
+  position: absolute;
+  top: -0.3rem;
+  left: 0.7rem;
+  color: white;
+  font-size: 0.7rem;
+  background-color: var(--color-danger);
+  border-radius: 0.8rem;
+  padding: 0.1rem 0.4rem;
+  width: fit-content;
+}
+
+.left .sidebar h3 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.left .sidebar .active {
+  background-color: var(--color-light);
+}
+
+.left .sidebar .active i,
+.left .sidebar .active h3 {
+  color: var(--color-primary);
+}
+
+.left .sidebar .active::before {
+  content: "";
+  display: block;
+  width: 0.5rem;
+  height: 100%;
+  position: absolute;
+  background-color: var(--color-primary);
+}
+
+.left .sidebar .menu-item:first-child.active {
+  border-top-left-radius: var(--card-border-radius);
+  overflow: hidden;
+}
+
+.left .sidebar .menu-item:last-child.active {
+  border-bottom-left-radius: var(--card-border-radius);
+  overflow: hidden;
+}
+
+.left .btn {
+  margin-top: 1rem;
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* ----------------Notifications Popup styles------------------- */
+.left .notifications-popup {
+  position: absolute;
+  top: 0;
+  left: 110%;
+  width: 30rem;
+  background-color: var(--color-white);
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  box-shadow: 0 0 2rem hsl(var(--color-primary), 75%, 60%, 25%);
+  z-index: 8;
+  display: none;
+}
+
+.left .notifications-popup::before {
+  content: "";
+  display: block;
+  width: 1.2rem;
+  height: 1.2rem;
+  background-color: var(--color-white);
+  position: absolute;
+  left: -0.6rem;
+  transform: rotate(45deg);
+}
+
+.left .notifications-popup > div {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.left .notifications-popup small {
+  display: block;
+}
+
+/* ----------------Middle  styles------------------- */
+.middle .stories {
+  display: flex;
+  justify-content: space-between;
+  height: 12rem;
+  gap: 0.5rem;
+}
+
+.middle .stories .story {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--card-padding);
+  border-radius: var(--card-border-radius);
+  font-size: 0.75rem;
+  color: white;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.middle .stories .story::before {
+  content: "";
+  width: 100%;
+  height: 5rem;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+  position: absolute;
+  bottom: 0;
+}
+
+.middle .stories .story .name {
+  z-index: 2;
+}
+
+.middle .stories .story:nth-child(1) {
+  background: url("/images/story-1.jpg") no-repeat center center/cover;
+}
+
+.middle .stories .story:nth-child(2) {
+  background: url("/images/story-2.jpg") no-repeat center center/cover;
+}
+
+.middle .stories .story:nth-child(3) {
+  background: url("/images/story-3.jpg") no-repeat center center/cover;
+}
+
+.middle .stories .story:nth-child(4) {
+  background: url("/images/story-4.jpg") no-repeat center center/cover;
+}
+
+.middle .stories .story:nth-child(5) {
+  background: url("/images/story-5.jpg") no-repeat center center/cover;
+}
+
+.middle .stories .story:nth-child(6) {
+  background: url("/images/story-6.jpg") no-repeat center center/cover;
+}
+
+.middle .story .profile-picture {
+  width: 2rem;
+  height: 2rem;
+  border: 3px solid var(--color-primary);
+  align-self: self-start;
+}
+
+/* ----------------Create Post ------------------- */
+.middle .create-post {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-white);
+  margin-top: 1rem;
+  padding: 0.4rem var(--card-padding);
+  border-radius: var(--border-radius);
+}
+
+.middle .create-post input[type="text"] {
+  width: 100%;
+  justify-self: self-start;
+  padding-left: 1rem;
+  margin-right: 1rem;
+  color: var(--color-dark);
+  background-color: transparent;
+}
+
+/* ----------------Feed ------------------- */
+.middle .feeds .feed {
+  background-color: var(--color-white);
+  padding: var(--card-padding);
+  border-radius: var(--card-border-radius);
+  margin: 1rem 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+/* ----------------Feed Head------------------- */
+.middle .feed .head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.middle .feed .user {
+  display: flex;
+  gap: 1rem;
+}
+
+/* ----------------Feed Photo------------------- */
+.middle .feed .photo {
+  border-radius: var(--card-border-radius);
+  margin: 0.7rem 0;
+  overflow: hidden;
+}
+
+/* ----------------Feed Action Btns------------------- */
+.middle .feed .action-buttons {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4rem;
+  align-items: center;
+  margin: 0.6rem;
+}
+
+.middle .feed .interaction-buttons span {
+  margin-right: 0.5rem;
+}
+
+/* ---------------- Liked by------------------- */
+.middle .feed .liked-by {
+  display: flex;
+  align-items: center;
+  margin: 0.7rem 0;
+}
+
+.middle .feed .liked-by span {
+  width: 1.4rem;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: -0.4rem;
+  border: 3px solid var(--color-white);
+}
+
+.middle .feed .liked-by span:first-child {
+  margin: 0;
+}
+
+.middle .feed .liked-by p {
+  margin-left: 0.6rem;
+}
+
+/* ---------------- Right------------------- */
+main .container .right {
+  position: sticky;
+  top: var(--sticky-top-right);
+  bottom: 0;
+  height: max-content;
+}
+
+/* ---------------- Messages------------------- */
+.right .messages {
+  background-color: var(--color-white);
+  padding: var(--card-padding);
+  border-radius: var(--card-border-radius);
+  position: relative;
+}
+
+/* ---------------- Messages Heading------------------- */
+.right .messages .heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.right .messages i {
+  font-size: 1.3rem;
+}
+
+/* ---------------- Messages Search Bar------------------- */
+.right .messages .search-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.3rem;
+}
+
+.right .messages .search-bar input[type="search"] {
+  width: 10vw;
+  font-size: 0.84rem;
+}
+
+/* ---------------- Messages Category ------------------- */
+/* my code */
+/* .right .messages .category {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    position: relative;
+}
+
+.right .messages .category::after{
+    content: '';
+    display: block;
+    height: 0.14rem;
+    width: 16rem;
+    border-radius: 2rem;
+    background-color: var(--color-light);
+    position: absolute;
+    top: 1.8rem;
+    left: 0.3rem;
+}
+
+.right .category .active::after{
+    content: '';
+    display: block;
+    height: 0.14rem;
+    width: 5rem;
+    background-color: var(--color-black);
+    position: absolute;
+    top: 1.8rem;
+    left: 0.3rem;
+    z-index: 7;
+
+}
+
+.right .category h6{
+    font-weight: 500;
+    text-align: center;
+    width: 100%;
+}
+
+.right .category .message-requests{
+    color: var(--color-primary);
+} */
+
+.right .messages .category {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  /* font-size: 1.2rem; */
+}
+
+.right .category h6 {
+  font-weight: 500;
+  text-align: center;
+  width: 100%;
+  font-size: 0.85rem;
+  border-bottom: 4px solid var(--color-light);
+  padding-bottom: 0.5rem;
+}
+
+.right .category .active {
+  border-color: var(--color-dark);
+}
+
+.right .category .message-requests {
+  color: var(--color-primary);
+}
+
+.right .messages .message {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+  margin-bottom: 1.2rem;
+  align-items: start;
+}
+
+.right .messages .message:last-child {
+  margin-bottom: 0;
+}
+
+/* single message  */
+.right .message p {
+  font-size: 0.8rem;
+}
+
+.right .message .profile-picture {
+  position: relative;
+  overflow: visible;
+}
+
+.right .message .profile-picture img {
+  border-radius: 50%;
+}
+
+.right .message .profile-picture .online {
+  content: "";
+  display: block;
+  width: 0.78rem;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background-color: var(--color-success);
+  border: 3px solid white;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+/* My code */
+/* online class  used with profile-picture class to use this code */
+/* .right .message {
+    position: relative;
+}
+
+.right .message .online::after{
+    content: '';
+    display: block;
+    width: 0.78rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: var(--color-success);
+    border: 3px solid white;
+    position: absolute;
+    top: 1.9rem;
+    left: 2rem;
+}  */
+
+/* ---------------- Friend Requests ------------------- */
+.right .friend-requests {
+  margin-top: 1rem;
+}
+
+.right .friend-requests h4 {
+  color: var(--color-gray);
+  margin-bottom: 1rem;
+}
+
+.right .friend-requests .request {
+  background-color: var(--color-white);
+  padding: var(--card-padding);
+  border-radius: var(--card-border-radius);
+  margin-bottom: 1rem;
+}
+
+.right .request .info {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.right .request .action {
+  display: flex;
+  gap: 1rem;
+}
+
+/* ---------------- Theme Customization ------------------- */
+.customize-theme {
+  height: 100vh;
+  width: 100vw;
+  border-radius: var(--card-border-radius);
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 3rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  font-size: 0.9rem;
+  z-index: 100;
+  display: none;
+}
+
+.customize-theme .card {
+  padding: 3rem;
+  background-color: var(--color-white);
+  border-radius: var(--card-border-radius);
+  width: 50%;
+}
+
+.customize-theme .card h2,
+.customize-theme .card p {
+  text-align: center;
+}
+
+.customize-theme .card h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+}
+
+.customize-theme .card p {
+  font-size: 1.1rem;
+}
+
+/* ---------------- Font Size ------------------- */
+.customize-theme .font-size {
+  margin-top: 5rem;
+}
+
+.customize-theme .card h4 {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.customize-theme .font-size > div {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-light);
+  padding: var(--card-padding);
+  border-radius: var(--card-border-radius);
+}
+
+.customize-theme .choose-size {
+  background-color: var(--color-secondary);
+  height: 0.3rem;
+  width: 100%;
+  margin: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.customize-theme .choose-size span {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: var(--color-secondary);
+  cursor: pointer;
+}
+
+.customize-theme .choose-size span.active {
+  background-color: var(--color-primary);
+}
+
+/* ---------------- Colors ------------------- */
+.customize-theme .color {
+  margin-top: 1.5rem;
+}
+
+.customize-theme .choose-color {
+  margin-top: 1rem;
+  background-color: var(--color-light);
+  padding: var(--search-padding);
+  border-radius: var(--card-border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.customize-theme .choose-color span {
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.customize-theme .choose-color span:nth-child(1) {
+  background: hsl(252, 75%, 60%);
+}
+.customize-theme .choose-color span:nth-child(2) {
+  background: hsl(52, 75%, 60%);
+}
+.customize-theme .choose-color span:nth-child(3) {
+  background: hsl(352, 75%, 60%);
+}
+.customize-theme .choose-color span:nth-child(4) {
+  background: hsl(152, 75%, 60%);
+}
+.customize-theme .choose-color span:nth-child(5) {
+  background: hsl(202, 75%, 60%);
+}
+
+.customize-theme .choose-color span.active {
+  border: 5px solid var(--color-white);
+}
+
+/* ---------------- Background Colors ------------------- */
+.customize-theme .background {
+  margin-top: 2rem;
+}
+
+.customize-theme .choose-bg {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  gap: 2rem;
+  padding: 0 1.2rem;
+}
+
+.customize-theme .choose-bg span {
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid var(--color-gray);
+}
+
+.customize-theme .choose-bg > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  cursor: pointer;
+  padding: var(--card-padding);
+  border-radius: 0.4rem;
+}
+
+.customize-theme .choose-bg > div.active {
+  border: 2px solid var(--color-primary);
+}
+
+.customize-theme .choose-bg .bg-2 {
+  background-color: hsl(257.14, 32.31%, 12.75%);
+  color: var(--color-white);
+}
+
+.customize-theme .choose-bg .bg-3 {
+  background-color: hsl(256.36, 28.21%, 7.65%);
+  color: var(--color-white);
+}
+
+.customize-theme .choose-bg h5 {
+  font-weight: 600;
+}
+
+
+/* ---------------- Media Queries for Laptop ------------------- */
+@media screen and (max-width: 1321px) { 
+  .container {
+    width: 90%;
+  }
+
+  main .container {
+    grid-template-columns: 18vw auto 24vw;
+    gap: 1rem;
+  }
+  
+}
+
+/* ---------------- Media Queries for Small Laptop And Big Tablet ------------------- */
+@media screen and (max-width: 1200px) {
+  .container {
+    width: 96%;
+  }
+
+  main .container {
+    grid-template-columns: 5rem auto 30vw;
+    gap: 1rem;
+  }
+
+  .left {
+    width: 5rem;
+    z-index: 5;
+  }
+
+  main .container .left .profile {
+    display: none;
+  }
+
+  .sidebar h3 {
+    display: none;
+  }
+
+  .left .btn {
+    display: none;
+  }
+}
+
+/* ---------------- Media Queries for Small Tablets And Mobile Phones ------------------- */
+@media screen and (max-width: 992px) {
+  nav .search-bar {
+    display: none;
+  }
+
+  main .container {
+    grid-template-columns: 0 auto 5rem;
+    gap: 0.3rem;
+  }
+
+  main .container .left {
+    grid-column: 3/4;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+  }
+
+  /* ----------------Notifications Popup styles------------------- */
+  .left .notifications-popup {
+    position: absolute;
+    left: -20rem;
+    width: 20rem;
+  }
+
+  .left .notifications-popup::before {
+    position: absolute;
+    left: calc(20rem - 0.6rem);
+    top: 1.3rem;
+  }
+
+  main .container .middle {
+    grid-column: 1/3;
+  }
+
+  main .container .right {
+    display: none;
+  }
+
+
+}
